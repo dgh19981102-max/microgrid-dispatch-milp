@@ -1,0 +1,19 @@
+{
+  "n_seeds": 1,
+  "saving_mean": 1854.7995771921733,
+  "saving_std": 0.0,
+  "share_of_saving_from_demand_charges": 0.9929437687803706,
+  "max_lp_milp_gap": 9.094947017729282e-13,
+  "solver_objectives_seed0": {
+    "highs": 7840.195078372303,
+    "cbc": 7840.19513339576,
+    "gurobi": 7840.195078372303,
+    "cplex": 7840.195078372303
+  },
+  "solver_times_seed0_s": {
+    "highs": 0.10031068500001084,
+    "cbc": 0.06912748799999235,
+    "gurobi": 0.028521144000023924,
+    "cplex": 0.025714677999985724
+  }
+}

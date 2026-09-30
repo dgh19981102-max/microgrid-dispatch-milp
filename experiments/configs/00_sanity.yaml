@@ -1,0 +1,19 @@
+# Experiment 00: sanity check on synthetic data (NOT a reported result)
+tariff: experiments/configs/tariff_tou_demand_placeholder.yaml
+out_dir: results/00_sanity
+start: "2023-07-10"          # a Monday in summer
+days: 7
+seeds: [0, 1, 2, 3, 4]
+profile: {peak_load_kw: 250.0, base_load_kw: 80.0, pv_kwp: 150.0}
+battery:
+  energy_kwh: 200.0
+  power_kw: 100.0
+  eta_charge: 0.95
+  eta_discharge: 0.95
+  soc_min_frac: 0.10
+  soc_max_frac: 1.00
+  deg_cost_per_kwh: 0.02
+grid: {import_limit_kw: null, export_limit_kw: null}
+soc0_frac: 0.5              # start and end the week at 50 % SOC
+solvers: [highs, cbc, gurobi, cplex]
+mip_gap: 1.0e-6

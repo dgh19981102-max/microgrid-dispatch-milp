@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Battery Dispatch Under Demand Charges | MILP · MPC · Forecast Error</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#154f58;--ink:#1d2b30;--muted:#5b6b70;--bg:#f5f7f8;--pill:#dde8ee;--card:#fff;--accent:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header{background:var(--teal);color:#fff;padding:14px 0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+header a{color:#fff;text-decoration:none;font-weight:500;margin-left:18px;opacity:.9}
+header a:hover{opacity:1;text-decoration:underline}
+.hero{padding:46px 0 18px}
+.pills span{display:inline-block;background:var(--pill);color:var(--teal);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin:0 6px 8px 0}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:700;font-size:clamp(30px,4.4vw,46px);line-height:1.15;margin:14px 0 14px}
+h2{font-family:"Source Serif 4",Georgia,serif;font-size:28px;margin:46px 0 10px}
+.lead{font-size:18px;color:var(--muted);max-width:820px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:26px 0}
+.kpi{background:var(--card);border-radius:14px;padding:18px 18px 14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.kpi b{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:32px;color:var(--teal)}
+.kpi span{font-size:14px;color:var(--muted)}
+.card{background:var(--card);border-radius:16px;padding:18px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card img{width:100%;height:auto;display:block;border-radius:8px}
+.card p{margin:10px 4px 2px;font-size:15px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #e6ecee}
+th{color:var(--teal);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl{overflow-x:auto}
+ul{padding-left:22px}
+li{margin:5px 0}
+footer{margin:50px 0 30px;color:var(--muted);font-size:14px}
+code{background:#e9eff1;padding:1px 6px;border-radius:5px;font-size:14px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><strong>microgrid-dispatch-milp</strong>
+<nav><a href="https://github.com/dgh19981102-max/microgrid-dispatch-milp">GitHub</a><a href="https://github.com/dgh19981102-max/microgrid-dispatch-milp/blob/main/results/summary/RESULTS.md">Results</a><a href="#limitations">Limitations</a></nav></div></header>
+
+<div class="wrap">
+<section class="hero">
+<div class="pills"><span>Pyomo MILP</span><span>Model predictive control</span><span>Stochastic optimisation</span><span>Demand charges</span><span>Python</span></div>
+<h1>Battery dispatch under demand charges: what forecast error really costs</h1>
+<p class="lead">Behind-the-meter battery + PV for 18 simulated commercial buildings on PG&amp;E's B-19 tariff, 15-minute resolution. A solver-agnostic MILP, rolling-horizon MPC with deterministic, quantile, stochastic and min-max variants, and 2.3 million solves of closed-loop simulation, all reproducible on free Colab CPUs.</p>
+<div class="kpis">
+<div class="kpi"><b>20.1 %</b><span>bill saving with perfect foresight (upper bound)</span></div>
+<div class="kpi"><b>9.1 %</b><span>with stochastic MPC and real forecasts (~46 % of the bound)</span></div>
+<div class="kpi"><b>18 / 18</b><span>buildings where stochastic beats deterministic MPC (+3.7 pp)</span></div>
+<div class="kpi"><b>0</b><span>MILP fallbacks in 2.3 M solves: LP-first is exact under B-19</span></div>
+</div>
+</section>
+
+<h2>Controllers compared</h2>
+<div class="card"><img src="assets/fig_policy_savings.png" alt="Bill savings by dispatch policy">
+<p>Savings versus the same building with PV but no battery. With a perfect forecast MPC reaches 97.7 % of the bound, so the loss comes from forecast error, not from the optimiser or the 24-hour horizon.</p></div>
+<div class="card tbl"><table>
+<tr><th>Policy</th><th>Mean saving</th><th>95 % CI</th><th>Share of bound</th></tr>
+<tr><td>Perfect foresight (bound)</td><td class="num">20.1 %</td><td>[17.0, 23.5]</td><td class="num">100 %</td></tr>
+<tr><td>MPC, perfect forecast</td><td class="num">19.6 %</td><td>[16.6, 22.9]</td><td class="num">97.7 %</td></tr>
+<tr><td>Stochastic MPC (10 scenarios)</td><td class="num">9.1 %</td><td>[7.5, 10.8]</td><td class="num">45.6 %</td></tr>
+<tr><td>Quantile MPC (q = 0.9)</td><td class="num">8.8 %</td><td>[7.1, 10.6]</td><td class="num">45.3 %</td></tr>
+<tr><td>Rule-based (energy-feasible threshold)</td><td class="num">8.3 %</td><td>[6.8, 9.9]</td><td class="num">42.1 %</td></tr>
+<tr><td>Robust min-max MPC</td><td class="num">6.9 %</td><td>[5.7, 8.3]</td><td class="num">35.1 %</td></tr>
+<tr><td>Deterministic MPC</td><td class="num">5.4 %</td><td>[3.4, 7.5]</td><td class="num">15.6 %</td></tr>
+</table></div>
+
+<h2>The demand-charge ratchet</h2>
+<div class="card"><img src="assets/fig_dispatch_example.png" alt="Grid import around the July peak">
+<p>Demand charges (49–67 % of the bill) are set by the month's highest 15-minute import. A deterministic MPC that under-forecasts charges into a peak that then cannot be undone. Executed open-loop it lost money in 11 of 18 buildings; a real-time demand guard adds 5–7 points to every policy.</p></div>
+
+<h2>What is forecast accuracy worth?</h2>
+<div class="card"><img src="assets/fig_forecast_value.png" alt="Savings versus forecast error scale">
+<p>Scaling the forecast error from 0 to 2× today's baseline. Value is highly non-linear: near today's accuracy a 10 % smaller error is worth only ~$174 per building per year, whereas handling uncertainty (stochastic or quantile MPC) recovers more than halving the error would.</p></div>
+
+<h2>Sizing</h2>
+<div class="card"><img src="assets/fig_sizing.png" alt="Battery sizing sweep">
+<p>Perfect-foresight upper bound for 2-hour batteries at 10–50 % of the annual peak. Ten-year break-even capex falls from $3,354 to $1,610 per kWh; with the realistic controller at 25 % it is about $1,035/kWh, before discounting, incentives and capacity fade.</p></div>
+
+<h2>Data you can trust</h2>
+<div class="card"><img src="assets/data_overview.png" alt="Load and PV data overview">
+<p>NREL ComStock loads (3 buildings × 3 types × 2 climates, chosen by a fixed median rule), NSRDB weather and a pvlib PV model validated against PVGIS (annual yield within 3.7–5.2 %). The load time stamps turned out to be Eastern Standard Time, verified from the exterior-lighting switch-on versus the computed sunset in every month.</p></div>
+
+<h2>Engineering</h2>
+<ul>
+<li><b>Solver-agnostic Pyomo model</b>: HiGHS, CBC, Gurobi and CPLEX give the same optima (within 5×10⁻⁵) on identical windows; switching is one line of YAML.</li>
+<li><b>LP-first with MILP fallback</b>: exact by construction; binaries matter only with negative prices (LP invalid in 65 % of windows) or export above import prices (54 %).</li>
+<li><b>10× faster inner loop</b>: the same LP assembled directly as a sparse matrix for HiGHS (~5 ms per window), cross-tested against the Pyomo reference.</li>
+<li><b>Honest evaluation</b>: independent bill calculator, causal forecasts (tested), 3 sampling seeds (median spread 0.55 % of the bill), bootstrap CIs and paired comparisons over buildings.</li>
+<li><b>Resumable at scale</b>: 468 runs, 27.5 CPU-hours on free Colab, weekly checkpoints on Google Drive, 66 unit tests.</li>
+</ul>
+
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>Simulated loads are smoother than metered data (load forecast error 3–8 %); real forecast penalties are likely larger.</li>
+<li>2018 loads and weather billed with the 2026 tariff; flat export value; holidays, Peak Day Pricing and taxes ignored.</li>
+<li>Uniform PV and battery sizing; B-19 applied to all buildings.</li>
+<li>Break-even capex ignores discounting and degradation; commercial battery cost data are scarce, so compare with quotes.</li>
+</ul>
+
+<footer>Code: MIT licence · Data: NREL ComStock &amp; NSRDB, EU JRC PVGIS, PG&amp;E tariff book · <a href="https://github.com/dgh19981102-max/microgrid-dispatch-milp">github.com/dgh19981102-max/microgrid-dispatch-milp</a></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Experiment 01: build processed hourly site data from the raw downloads
+raw_dir: data/raw
+out_dir: data/processed
+results_dir: results/01_data
+sites:
+  alameda: {county: G0600010, lat: 37.80, lon: -122.27, name: "Alameda County, CA (mild coastal)"}
+  fresno:  {county: G0600190, lat: 36.74, lon: -119.79, name: "Fresno County, CA (hot inland)"}
+building_types: [MediumOffice, RetailStandalone, Warehouse]

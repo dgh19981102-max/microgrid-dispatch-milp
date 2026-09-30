@@ -1,0 +1,50 @@
+{
+  "seed": 2,
+  "no_battery": {
+    "energy_import": 2365.1641613030015,
+    "export_credit": 0.35744331774991595,
+    "degradation": 0.0,
+    "demand:max_demand:2023-07": 5997.6737333474575,
+    "demand:peak_demand:2023-07": 3998.4491555649715,
+    "demand": 9996.122888912429,
+    "total": 12360.92960689768
+  },
+  "solvers": {
+    "highs": {
+      "objective": 9847.868448976376,
+      "wall_time_s": 0.34057727099997237,
+      "n_vars": 1347,
+      "n_cons": 1373
+    },
+    "cbc": {
+      "objective": 9847.868430637998,
+      "wall_time_s": 0.1301425590000349,
+      "n_vars": 1347,
+      "n_cons": 1373
+    },
+    "gurobi": {
+      "objective": 9847.868448976376,
+      "wall_time_s": 0.10264117899998837,
+      "n_vars": 1347,
+      "n_cons": 1373
+    },
+    "cplex": {
+      "error": "size-limited licence"
+    }
+  },
+  "milp_bill": {
+    "energy_import": 2309.565818481716,
+    "export_credit": 0.0,
+    "degradation": 17.963709992002478,
+    "demand:max_demand:2023-07": 4843.628671487903,
+    "demand:peak_demand:2023-07": 2676.710249014755,
+    "demand": 7520.338920502658,
+    "total": 9847.868448976376
+  },
+  "lp_objective": 9847.868448976376,
+  "milp_objective": 9847.868448976376,
+  "lp_simultaneous_ch_dis_kwh": 0.0,
+  "equivalent_full_cycles": 4.4909274980006195,
+  "peak_no_battery_kw": 199.92245777824857,
+  "peak_milp_kw": 161.45428904959678
+}

@@ -1,0 +1,219 @@
+{
+  "sites": {
+    "alameda": {
+      "name": "Alameda County, CA (mild coastal)",
+      "hours": 8757,
+      "start_local": "2018-01-01 00:00:00-08:00",
+      "end_local": "2018-12-31 20:00:00-08:00",
+      "pv": {
+        "yield_nsrdb_pvlib_kwh_per_kwp": 1599.2044374026846,
+        "common_hours": 8752,
+        "yield_nsrdb_pvlib_common": 1599.1663765133694,
+        "yield_pvgis_era5_common": 1542.13529,
+        "relative_difference": 0.036981895741047044,
+        "hourly_correlation": 0.9691394638603328,
+        "daily_energy_cv_nsrdb": 0.4035122781218857,
+        "daily_energy_cv_era5": 0.3688564208138504
+      }
+    }
+  },
+  "buildings": {
+    "alameda_MediumOffice_27374": {
+      "site": "alameda",
+      "type": "MediumOffice",
+      "annual_mwh": 549.5934219,
+      "peak_kw_15min": 220.1288,
+      "peak_kw_hourly": 172.9753,
+      "load_factor": 0.36282907683259025,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": 2.74,
+        "2": 2.75,
+        "3": 2.74,
+        "4": 2.78,
+        "5": 2.73,
+        "6": 2.73,
+        "7": -4.93,
+        "8": 2.74,
+        "9": 2.77,
+        "10": 2.71,
+        "11": 2.67,
+        "12": 2.65
+      }
+    },
+    "alameda_MediumOffice_32288": {
+      "site": "alameda",
+      "type": "MediumOffice",
+      "annual_mwh": 546.2089553000001,
+      "peak_kw_15min": 156.9236,
+      "peak_kw_hourly": 150.4332,
+      "load_factor": 0.4146290939804367,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": 2.91,
+        "2": 2.92,
+        "3": 2.89,
+        "4": 2.84,
+        "5": -0.05,
+        "6": -4.66,
+        "7": 2.83,
+        "9": 2.87,
+        "10": -2.71,
+        "11": 2.85,
+        "12": 2.9
+      }
+    },
+    "alameda_MediumOffice_78741": {
+      "site": "alameda",
+      "type": "MediumOffice",
+      "annual_mwh": 551.1614542,
+      "peak_kw_15min": 193.6152,
+      "peak_kw_hourly": 189.4273,
+      "load_factor": 0.3322621863739518,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": -2.61,
+        "2": -3.19,
+        "3": 2.74,
+        "4": 2.78,
+        "5": 2.77,
+        "6": 2.76,
+        "7": 2.67,
+        "8": 2.77,
+        "9": 2.77,
+        "10": 2.75,
+        "11": -2.43,
+        "12": -2.36
+      }
+    },
+    "alameda_RetailStandalone_1443": {
+      "site": "alameda",
+      "type": "RetailStandalone",
+      "annual_mwh": 108.21121179999999,
+      "peak_kw_15min": 32.9488,
+      "peak_kw_hourly": 32.737899999999996,
+      "load_factor": 0.3774557911878481,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": 2.73,
+        "2": 2.72,
+        "3": 2.71,
+        "4": 2.7,
+        "5": 2.7,
+        "6": 2.7,
+        "7": 2.67,
+        "8": 2.7,
+        "9": 2.7,
+        "10": 2.71,
+        "11": 2.69,
+        "12": 2.66
+      }
+    },
+    "alameda_RetailStandalone_17254": {
+      "site": "alameda",
+      "type": "RetailStandalone",
+      "annual_mwh": 107.81573209999999,
+      "peak_kw_15min": 32.6652,
+      "peak_kw_hourly": 32.3354,
+      "load_factor": 0.3807575720593918,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": 2.73,
+        "2": 2.72,
+        "3": 2.71,
+        "4": 2.7,
+        "5": 2.7,
+        "6": 2.7,
+        "7": 2.68,
+        "8": 2.7,
+        "9": 2.71,
+        "10": 2.71,
+        "11": 2.69,
+        "12": 2.66
+      }
+    },
+    "alameda_RetailStandalone_29975": {
+      "site": "alameda",
+      "type": "RetailStandalone",
+      "annual_mwh": 107.15134739999999,
+      "peak_kw_15min": 22.5688,
+      "peak_kw_hourly": 22.1886,
+      "load_factor": 0.5514579293311479,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": 2.8,
+        "2": 2.79,
+        "3": 2.76,
+        "4": 2.73,
+        "5": 2.71,
+        "6": 2.7,
+        "7": 2.69,
+        "8": 2.73,
+        "9": 2.75,
+        "10": 2.77,
+        "11": 2.83,
+        "12": 2.89
+      }
+    },
+    "alameda_Warehouse_2441": {
+      "site": "alameda",
+      "type": "Warehouse",
+      "annual_mwh": 116.433783,
+      "peak_kw_15min": 82.5464,
+      "peak_kw_hourly": 78.8674,
+      "load_factor": 0.16858779663319834,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": 2.73,
+        "2": 2.74,
+        "3": 2.75,
+        "4": 2.78,
+        "5": 2.78,
+        "6": 2.73,
+        "7": 2.73,
+        "8": 2.76,
+        "9": 2.77,
+        "10": 2.75,
+        "11": 2.74,
+        "12": 2.66
+      }
+    },
+    "alameda_Warehouse_6386": {
+      "site": "alameda",
+      "type": "Warehouse",
+      "annual_mwh": 113.8970141,
+      "peak_kw_15min": 94.564,
+      "peak_kw_hourly": 89.9391,
+      "load_factor": 0.14461337165074128,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": -0.87,
+        "2": -1.41,
+        "3": -1.91,
+        "4": -3.39,
+        "5": -3.85,
+        "6": -4.24,
+        "7": -4.2,
+        "8": -3.66,
+        "9": -2.87,
+        "10": -2.15,
+        "11": -0.67,
+        "12": -0.59
+      }
+    },
+    "alameda_Warehouse_9002": {
+      "site": "alameda",
+      "type": "Warehouse",
+      "annual_mwh": 109.59307329999999,
+      "peak_kw_15min": 32.0492,
+      "peak_kw_hourly": 28.3652,
+      "load_factor": 0.44120650424709595,
+      "lighting_minus_pst_sunset_h_by_month": {
+        "1": 2.78,
+        "2": 2.8,
+        "3": 2.79,
+        "4": 2.81,
+        "5": 2.78,
+        "6": 2.71,
+        "7": 2.73,
+        "8": 2.77,
+        "9": 2.8,
+        "10": 2.8,
+        "11": 2.83,
+        "12": 2.88
+      }
+    }
+  }
+}

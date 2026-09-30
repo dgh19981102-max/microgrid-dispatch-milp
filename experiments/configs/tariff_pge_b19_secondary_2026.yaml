@@ -1,0 +1,50 @@
+# PG&E Electric Schedule B-19 (Medium General Demand-Metered TOU Service),
+# SECONDARY voltage, standard option (not Option R / Option S), bundled service.
+# Source: PG&E tariff book, ELEC_SCHEDS_B-19.pdf, Sheets 4 and 15,
+#   Advice 7846-E, effective March 1, 2026:
+#   https://www.pge.com/tariffs/assets/pdf/tariffbook/ELEC_SCHEDS_B-19.pdf
+# Retrieved 2026-09-29.
+#
+# Simplifications (documented in README "Limitations"):
+#  * Peak Day Pricing (PDP) events, power-factor adjustment and taxes/fees are ignored.
+#  * Billing month = calendar month; seasons switch on month boundaries (Jun 1, Oct 1),
+#    so no pro-rating of mixed-season billing months is needed.
+#  * Customer charge (voluntary B-19: $11.36882 per meter per day) is a constant that
+#    does not depend on dispatch; it is reported separately, not optimised.
+#  * Export compensation: PG&E's Net Billing Tariff pays hourly Avoided-Cost-Calculator
+#    values; here a flat ASSUMED value is used (see export_rate) - PV is sized so that
+#    exports are small, which limits the influence of this assumption.
+name: pge_b19_secondary_2026
+source_note: "PG&E Schedule B-19 secondary, total bundled rates, effective 2026-03-01 (Advice 7846-E)."
+customer_charge_per_day: 11.36882
+
+seasons:
+  summer: [6, 7, 8, 9]
+  winter: [1, 2, 3, 4, 5, 10, 11, 12]
+
+default_period: off_peak
+periods:
+  summer:
+    - {name: peak,      hours: [16, 21], days: all}
+    - {name: part_peak, hours: [14, 16], days: all}
+    - {name: part_peak, hours: [21, 23], days: all}
+  winter:
+    - {name: peak,           hours: [16, 21], days: all}
+    - {name: super_off_peak, hours: [9, 14],  days: all, months: [3, 4, 5]}
+
+energy_rates:          # $/kWh, total bundled, secondary voltage
+  summer: {peak: 0.18648, part_peak: 0.14775, off_peak: 0.12037}
+  winter: {peak: 0.16188, off_peak: 0.12026, super_off_peak: 0.06442}
+
+export_rate: 0.05      # $/kWh, ASSUMPTION (flat proxy for NBT export value)
+
+demand_charges:        # $/kW per billing month, total bundled, secondary voltage
+  - name: max_demand
+    rates: {summer: 37.37, winter: 37.37}
+    periods: null
+  - name: peak_demand
+    rates: {summer: 46.16, winter: 2.31}
+    periods: [peak]
+  - name: part_peak_demand
+    rates: {summer: 10.52}
+    periods: [part_peak]

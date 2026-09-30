@@ -1,0 +1,28 @@
+# Shared settings for experiments 02-07. All values fixed BEFORE running experiments.
+tariff: experiments/configs/tariff_pge_b19_secondary_2026.yaml
+processed_dir: data/processed
+sites: [alameda, fresno]
+eval_start: "2018-02-01"        # January = warm-up for forecasts and error pool
+sizing:
+  pv_energy_fraction: 0.30      # PV annual energy = 30 % of building consumption
+  bat_power_fraction: 0.25      # battery power = 25 % of annual 15-min peak
+  bat_hours: 2.0                # 2-hour battery
+battery_template:
+  eta_charge: 0.95
+  eta_discharge: 0.95
+  soc_min_frac: 0.10
+  soc_max_frac: 1.00
+  deg_cost_per_kwh: 0.02        # $/kWh discharged (assumption)
+mpc:
+  fine_steps: 16                # 4 h at 15 min
+  coarse_hours: 20              # + 20 h hourly = 24 h look-ahead
+  terminal_value_per_kwh: 0.10  # $/kWh credited for energy left at the window end
+  n_scenarios: 10
+  quantile: 0.9
+  pool_days: 30
+guard: true                     # real-time demand guard (see simulate.py)
+solver: {name: highs, mip_gap: 1.0e-4, time_limit: 60, lp_backend: highspy}
+quick:                          # --quick: 2 buildings, one month
+  buildings: [fresno_MediumOffice_75080, alameda_Warehouse_2441]
+  eval_start: "2018-07-01"
+  eval_end: "2018-08-01"

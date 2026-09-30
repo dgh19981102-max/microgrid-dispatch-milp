@@ -1,0 +1,79 @@
+{
+  "building": "fresno_MediumOffice_58687",
+  "available": [
+    "highs",
+    "cbc",
+    "gurobi",
+    "cplex"
+  ],
+  "solvers": {
+    "pyomo+highs+lp": {
+      "median_ms": 61.359871999229654,
+      "max_abs_obj_diff_vs_direct": 1.8189894035458565e-12
+    },
+    "pyomo+highs+milp": {
+      "median_ms": 111.05154950018914,
+      "max_abs_obj_diff_vs_direct": 0.001504944379121298
+    },
+    "pyomo+cbc+lp": {
+      "median_ms": 60.384906000763294,
+      "max_abs_obj_diff_vs_direct": 4.5274669901118614e-05
+    },
+    "pyomo+cbc+milp": {
+      "median_ms": 107.99199600114662,
+      "max_abs_obj_diff_vs_direct": 4.53378643214819e-05
+    },
+    "pyomo+gurobi+lp": {
+      "median_ms": 73.7296415027231,
+      "max_abs_obj_diff_vs_direct": 2.7284841053187847e-12
+    },
+    "pyomo+gurobi+milp": {
+      "median_ms": 53.06891649888712,
+      "max_abs_obj_diff_vs_direct": 1.8189894035458565e-12
+    },
+    "pyomo+cplex+lp": {
+      "median_ms": 41.16234600041935,
+      "max_abs_obj_diff_vs_direct": 3.637978807091713e-12
+    },
+    "pyomo+cplex+milp": {
+      "median_ms": 42.7864960001898,
+      "max_abs_obj_diff_vs_direct": 3.637978807091713e-12
+    },
+    "direct_highspy_lp": {
+      "median_ms": 5.650331499055028,
+      "max_abs_obj_diff_vs_direct": 0.0
+    }
+  },
+  "scaling": [
+    {
+      "scenarios": 1,
+      "n_vars": 292,
+      "median_ms": 4.920195002341643
+    },
+    {
+      "scenarios": 5,
+      "n_vars": 1460,
+      "median_ms": 17.237178999494063
+    },
+    {
+      "scenarios": 10,
+      "n_vars": 2920,
+      "median_ms": 32.504185001016594
+    },
+    {
+      "scenarios": 20,
+      "n_vars": 5840,
+      "median_ms": 75.97647899820004
+    },
+    {
+      "scenarios": 40,
+      "n_vars": 11680,
+      "median_ms": 213.88977600145154
+    },
+    {
+      "scenarios": 80,
+      "n_vars": 23360,
+      "median_ms": 427.17153299963684
+    }
+  ]
+}

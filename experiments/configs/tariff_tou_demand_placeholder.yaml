@@ -1,0 +1,38 @@
+# Commercial TOU + demand-charge tariff, STRUCTURE modelled after large
+# commercial tariffs in California (e.g. PG&E B-19 style: seasonal TOU energy
+# rates + a monthly max-demand charge + a peak-period demand charge).
+#
+# !!! PLACEHOLDER NUMBERS !!!
+# Rates below are round illustrative values used for model development only.
+# They will be replaced by values checked against the OpenEI Utility Rate
+# Database (with citation) before any reported experiment is run.
+name: tou_demand_placeholder
+source_note: "PLACEHOLDER values for development; not a real published tariff."
+
+seasons:
+  summer: [6, 7, 8, 9]
+  winter: [1, 2, 3, 4, 5, 10, 11, 12]
+
+default_period: off_peak
+periods:
+  summer:
+    - {name: peak,      hours: [16, 21], days: weekday}
+    - {name: part_peak, hours: [14, 16], days: weekday}
+    - {name: part_peak, hours: [21, 23], days: weekday}
+  winter:
+    - {name: peak,           hours: [16, 21], days: weekday}
+    - {name: super_off_peak, hours: [9, 14],  days: all}
+
+energy_rates:          # $/kWh
+  summer: {peak: 0.20, part_peak: 0.15, off_peak: 0.12}
+  winter: {peak: 0.17, off_peak: 0.13, super_off_peak: 0.09}
+
+export_rate: 0.05      # $/kWh, flat net-billing credit
+
+demand_charges:        # $/kW per billing month
+  - name: max_demand
+    rates: {summer: 30.0, winter: 30.0}
+    periods: null      # all hours of the month
+  - name: peak_demand
+    rates: {summer: 20.0, winter: 2.0}
+    periods: [peak]

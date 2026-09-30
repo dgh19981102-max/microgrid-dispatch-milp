@@ -1,0 +1,19 @@
+{
+  "n_seeds": 5,
+  "saving_mean": 2423.633510348068,
+  "saving_std": 162.1016903528059,
+  "share_of_saving_from_demand_charges": 0.9869214127293345,
+  "max_lp_milp_gap": 0.0,
+  "solver_objectives_seed0": {
+    "highs": 9814.341168193427,
+    "cbc": 9814.3412230676,
+    "gurobi": 9814.341168193427,
+    "cplex": null
+  },
+  "solver_times_seed0_s": {
+    "highs": 0.3003450670000234,
+    "cbc": 0.13447745500002384,
+    "gurobi": 0.10899946700004648,
+    "cplex": null
+  }
+}

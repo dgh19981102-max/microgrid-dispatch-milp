@@ -1,0 +1,319 @@
+{
+  "n_buildings": 18,
+  "policies": [
+    {
+      "policy": "Rule-based",
+      "n": 18,
+      "mean saving %": 8.28468047785184,
+      "95% CI": "[6.8, 9.9]",
+      "median %": 7.034101456703039,
+      "min %": 3.443451607996638,
+      "buildings worse than no battery": 0,
+      "share of perfect-foresight saving %": 42.05112500057606
+    },
+    {
+      "policy": "Deterministic MPC",
+      "n": 18,
+      "mean saving %": 5.360703034143224,
+      "95% CI": "[3.4, 7.5]",
+      "median %": 2.42046438636563,
+      "min %": 1.2582487778208644,
+      "buildings worse than no battery": 0,
+      "share of perfect-foresight saving %": 15.583296738923753
+    },
+    {
+      "policy": "Quantile MPC (q=0.9)",
+      "n": 18,
+      "mean saving %": 8.788109273357865,
+      "95% CI": "[7.1, 10.6]",
+      "median %": 7.415040790729176,
+      "min %": 4.095316076343121,
+      "buildings worse than no battery": 0,
+      "share of perfect-foresight saving %": 45.286864454371454
+    },
+    {
+      "policy": "Stochastic MPC",
+      "n": 18,
+      "mean saving %": 9.080968115575727,
+      "95% CI": "[7.5, 10.8]",
+      "median %": 7.896488025673268,
+      "min %": 4.847181108545893,
+      "buildings worse than no battery": 0,
+      "share of perfect-foresight saving %": 45.620163075919386
+    },
+    {
+      "policy": "Robust (min-max) MPC",
+      "n": 18,
+      "mean saving %": 6.9405260385490415,
+      "95% CI": "[5.7, 8.3]",
+      "median %": 6.356799004502916,
+      "min %": 1.8666279598486397,
+      "buildings worse than no battery": 0,
+      "share of perfect-foresight saving %": 35.067345936310346
+    },
+    {
+      "policy": "MPC, perfect forecast",
+      "n": 18,
+      "mean saving %": 19.597863881303365,
+      "95% CI": "[16.6, 22.9]",
+      "median %": 15.751294037646364,
+      "min %": 11.997584106128441,
+      "buildings worse than no battery": 0,
+      "share of perfect-foresight saving %": 97.69056955947704
+    },
+    {
+      "policy": "Perfect foresight (bound)",
+      "n": 18,
+      "mean saving %": 20.11035111428058,
+      "95% CI": "[17.0, 23.5]",
+      "median %": 16.117001506656273,
+      "min %": 12.108613082804697,
+      "buildings worse than no battery": 0,
+      "share of perfect-foresight saving %": 100.0
+    }
+  ],
+  "paired": [
+    {
+      "A minus B (saving, % of bill)": "Stochastic MPC - Deterministic MPC",
+      "mean": 3.720265081432503,
+      "95% CI": "[3.00, 4.44]",
+      "A better in": "18/18"
+    },
+    {
+      "A minus B (saving, % of bill)": "Quantile MPC (q=0.9) - Deterministic MPC",
+      "mean": 3.4274062392146387,
+      "95% CI": "[2.63, 4.23]",
+      "A better in": "18/18"
+    },
+    {
+      "A minus B (saving, % of bill)": "Robust (min-max) MPC - Stochastic MPC",
+      "mean": -2.1404420770266857,
+      "95% CI": "[-2.70, -1.61]",
+      "A better in": "0/18"
+    },
+    {
+      "A minus B (saving, % of bill)": "Deterministic MPC - Rule-based",
+      "mean": -2.923977443708616,
+      "95% CI": "[-4.54, -1.27]",
+      "A better in": "3/18"
+    },
+    {
+      "A minus B (saving, % of bill)": "Stochastic MPC - Rule-based",
+      "mean": 0.7962876377238879,
+      "95% CI": "[-0.57, 2.07]",
+      "A better in": "13/18"
+    }
+  ],
+  "evpi_usd_mean": 7630.573066395335,
+  "vss_usd_mean": 2371.1123202580366,
+  "seed_spread_pct_median": 0.5535396543315789,
+  "forecast_value": {
+    "k": [
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "mean_saving_pct": [
+      19.597863881303365,
+      7.714528197032455,
+      5.360703034143224,
+      4.561548446616855,
+      3.6719583519063375
+    ],
+    "usd_per_10pct_error_per_building_window": 158.27072587217484,
+    "window_months": 10.90670170827858
+  },
+  "forecast_skill": {
+    "load_nmae_0-1h": 0.03344414337116809,
+    "load_nmae_1-4h": 0.06466952384550372,
+    "load_nmae_4-24h": 0.08389551218718183,
+    "pv_nmae_0-1h": 0.07828836927310726,
+    "pv_nmae_1-4h": 0.1459516846882913,
+    "pv_nmae_4-24h": 0.17915442502039003
+  },
+  "realistic_capture": 0.4562016307591939,
+  "sizing": [
+    {
+      "size": 0.1,
+      "usd_per_kwh_yr": 335.4399524436031,
+      "breakeven_capex_10y": 3354.399524436031,
+      "mean saving %": 11.203811981573573
+    },
+    {
+      "size": 0.2,
+      "usd_per_kwh_yr": 252.95123998973708,
+      "breakeven_capex_10y": 2529.5123998973704,
+      "mean saving %": 17.60129200547225
+    },
+    {
+      "size": 0.25,
+      "usd_per_kwh_yr": 226.8306005368454,
+      "breakeven_capex_10y": 2268.306005368454,
+      "mean saving %": 20.110351114280583
+    },
+    {
+      "size": 0.3,
+      "usd_per_kwh_yr": 207.96644455634265,
+      "breakeven_capex_10y": 2079.664445563427,
+      "mean saving %": 22.269708244057526
+    },
+    {
+      "size": 0.4,
+      "usd_per_kwh_yr": 181.50146248923772,
+      "breakeven_capex_10y": 1815.0146248923775,
+      "mean saving %": 25.668909636359974
+    },
+    {
+      "size": 0.5,
+      "usd_per_kwh_yr": 160.94572970694355,
+      "breakeven_capex_10y": 1609.4572970694355,
+      "mean saving %": 28.17398396788444
+    }
+  ],
+  "openloop": [
+    {
+      "policy": "Rule-based",
+      "n": 18,
+      "saving % open-loop": 2.8834437377050097,
+      "saving % with guard": 8.28468047785184,
+      "open-loop worse than no battery": "2/18"
+    },
+    {
+      "policy": "Deterministic MPC",
+      "n": 18,
+      "saving % open-loop": -1.459882022491625,
+      "saving % with guard": 5.360703034143223,
+      "open-loop worse than no battery": "11/18"
+    },
+    {
+      "policy": "Quantile MPC (q=0.9)",
+      "n": 18,
+      "saving % open-loop": 3.4564389151310735,
+      "saving % with guard": 8.788109273357865,
+      "open-loop worse than no battery": "1/18"
+    },
+    {
+      "policy": "Stochastic MPC",
+      "n": 18,
+      "saving % open-loop": 4.151206315554201,
+      "saving % with guard": 9.03234957539788,
+      "open-loop worse than no battery": "0/18"
+    }
+  ],
+  "milp_vs_lp": {
+    "fallback_counts": {
+      "solves": 2300832,
+      "milp_fallbacks": 0
+    },
+    "stress": {
+      "b19_as_is": {
+        "windows": 160,
+        "share_lp_invalid": 0.0,
+        "mean_gap_usd": -3.774758283725532e-14,
+        "max_gap_usd": 1.8189894035458565e-12,
+        "max_lp_violation_kw": 0.0,
+        "median_lp_s": 0.06399010049972276,
+        "median_milp_s": 0.14058926799953042
+      },
+      "negative_price_10_15h": {
+        "windows": 160,
+        "share_lp_invalid": 0.65,
+        "mean_gap_usd": 1.8567030378783176,
+        "max_gap_usd": 14.137991136190976,
+        "max_lp_violation_kw": 66.74021841992779,
+        "median_lp_s": 0.06622829099796945,
+        "median_milp_s": 0.14801880499908293
+      },
+      "export_above_import_in_peak": {
+        "windows": 160,
+        "share_lp_invalid": 0.5375,
+        "mean_gap_usd": 1.1079726901740763,
+        "max_gap_usd": 19.38641167799051,
+        "max_lp_violation_kw": 54.04683552457254,
+        "median_lp_s": 0.07322184400254628,
+        "median_milp_s": 0.15787913500025752
+      }
+    }
+  },
+  "solvers": {
+    "building": "fresno_MediumOffice_58687",
+    "available": [
+      "highs",
+      "cbc",
+      "gurobi",
+      "cplex"
+    ],
+    "solvers": {
+      "pyomo+highs+lp": {
+        "median_ms": 61.359871999229654,
+        "max_abs_obj_diff_vs_direct": 1.8189894035458565e-12
+      },
+      "pyomo+highs+milp": {
+        "median_ms": 111.05154950018914,
+        "max_abs_obj_diff_vs_direct": 0.001504944379121298
+      },
+      "pyomo+cbc+lp": {
+        "median_ms": 60.384906000763294,
+        "max_abs_obj_diff_vs_direct": 4.5274669901118614e-05
+      },
+      "pyomo+cbc+milp": {
+        "median_ms": 107.99199600114662,
+        "max_abs_obj_diff_vs_direct": 4.53378643214819e-05
+      },
+      "pyomo+gurobi+lp": {
+        "median_ms": 73.7296415027231,
+        "max_abs_obj_diff_vs_direct": 2.7284841053187847e-12
+      },
+      "pyomo+gurobi+milp": {
+        "median_ms": 53.06891649888712,
+        "max_abs_obj_diff_vs_direct": 1.8189894035458565e-12
+      },
+      "pyomo+cplex+lp": {
+        "median_ms": 41.16234600041935,
+        "max_abs_obj_diff_vs_direct": 3.637978807091713e-12
+      },
+      "pyomo+cplex+milp": {
+        "median_ms": 42.7864960001898,
+        "max_abs_obj_diff_vs_direct": 3.637978807091713e-12
+      },
+      "direct_highspy_lp": {
+        "median_ms": 5.650331499055028,
+        "max_abs_obj_diff_vs_direct": 0.0
+      }
+    },
+    "scaling": [
+      {
+        "scenarios": 1,
+        "n_vars": 292,
+        "median_ms": 4.920195002341643
+      },
+      {
+        "scenarios": 5,
+        "n_vars": 1460,
+        "median_ms": 17.237178999494063
+      },
+      {
+        "scenarios": 10,
+        "n_vars": 2920,
+        "median_ms": 32.504185001016594
+      },
+      {
+        "scenarios": 20,
+        "n_vars": 5840,
+        "median_ms": 75.97647899820004
+      },
+      {
+        "scenarios": 40,
+        "n_vars": 11680,
+        "median_ms": 213.88977600145154
+      },
+      {
+        "scenarios": 80,
+        "n_vars": 23360,
+        "median_ms": 427.17153299963684
+      }
+    ]
+  }
+}

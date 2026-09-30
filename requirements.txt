@@ -1,0 +1,14 @@
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+pyyaml>=6.0
+matplotlib>=3.7
+tabulate>=0.9
+pyomo>=6.7
+highspy>=1.7
+pvlib>=0.11
+pytest>=7.0
+# Optional solvers, only for experiment 07 (size-limited free licences; see README):
+# gurobipy
+# cplex
+# CBC: system package, e.g. `apt-get install coinor-cbc`
